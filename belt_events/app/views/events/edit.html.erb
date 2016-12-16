@@ -1,0 +1,17 @@
+<a href="/events">Events Dashboard</a>
+<h3>Edit Event</h3>
+<form action="/events/<%= @event.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden"name="_method"value="patch">
+  Name
+  <input type="text" name="event[name]" value="<%= @event.name %>">
+  <br>
+  Date
+  <input type="date" name="event[date]" value="<%= @event.date %>">
+  <br>
+  Location
+  <input type="text" name="event[location]" value="<%= @event.location %>">
+  <%= select_tag("event[state_id]", options_from_collection_for_select(@states,"id", "name", params[:state_id].to_i)) %>
+  <br>
+  <input type="submit" value="Add Event!">
+</form>
